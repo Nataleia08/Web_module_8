@@ -1,15 +1,15 @@
 import pika
 from MongoDB.models import Contact
 from faker import Faker
+import json
+import connect_bd
 
 
 fake = Faker("uk-UA")
 
 
-
-
 def main():
-    credentials = pika.PlainCredentials('guest', 'guest')
+    credentials = pika.PlainCredentials('guest', '0987654321')
     connection = pika.BlockingConnection(
         pika.ConnectionParameters(host='localhost', port=5672, credentials=credentials))
     channel = connection.channel()

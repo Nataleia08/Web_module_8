@@ -12,7 +12,7 @@ for a in list_a:
     except OperationError as err:
         print(err)
 
-with open("qoutes.json", "r") as fh:
+with open("quotes.json", "r") as fh:
     list_q = json.load(fh)
 for q in list_q:
     try:
