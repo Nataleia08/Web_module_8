@@ -12,14 +12,27 @@ if __name__ == "__main__":
             case 'exit':
                 break
             case 'name':
-                result = Quotes.objects(author__in=list_command[1])
-                print(result)
+                try:
+                    id_name = Authors.objects(fullname=list_command[1])
+                    for id_n in id_name:
+                        print(id_n.id)
+                        result = Quotes.objects(author=id_n)
+                        for q in result:
+                            print(q.id, q.tags, q.quote)
+                except:
+                    print("Not found!")
             case 'tag':
-                result = Quotes.objects(tags=list_command[1])
-                for q in result:
-                    print(q.id, q.tags, (q.quote))
+                try:
+                    result = Quotes.objects(tags=list_command[1])
+                    for q in result:
+                        print(q.id, q.tags, q.quote)
+                except:
+                    print("Not found!")
             case 'tags':
-                list_tags = list_command[1].split(",")
-                result = Quotes.objects(tags__in=list_tags)
-                for q in result:
-                    print(q.id, q.tags, q.quote)
+                try:
+                    list_tags = list_command[1].split(",")
+                    result = Quotes.objects(tags__in=list_tags)
+                    for q in result:
+                        print(q.id, q.tags, q.quote)
+                except:
+                    print("Not found!")

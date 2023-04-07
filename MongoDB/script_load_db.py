@@ -16,7 +16,8 @@ with open("qoutes.json", "r") as fh:
     list_q = json.load(fh)
 for q in list_q:
     try:
-        nq = Quotes(tags = q["tags"], author = q["author"], quote = q["quote"])
+        author_ob = Authors.objects(fullname=q["author"])
+        nq = Quotes(tags=q["tags"], author=author_ob[0], quote=q["quote"])
         nq.save()
     except OperationError as err:
         print(err)
