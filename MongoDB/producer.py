@@ -19,7 +19,8 @@ def main():
     for i in range(10):
         i_email = Contact(fullname=fake.name(), email=fake.email(), phone = fake.phone_number())
         i_email.save()
-        channel.basic_publish(exchange='', routing_key='emails', body=json.dumps(i_email).encode())
+        messages = str(i_email.id)
+        channel.basic_publish(exchange='', routing_key='emails', body=messages)
     connection.close()
 
 

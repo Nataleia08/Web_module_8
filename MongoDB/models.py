@@ -1,5 +1,5 @@
 from mongoengine import Document
-from mongoengine.fields import ListField, StringField, DateField, ReferenceField, BooleanField
+from mongoengine.fields import ListField, StringField, DateField, ReferenceField, BooleanField, IntField
 
 
 class Authors(Document):
@@ -17,3 +17,4 @@ class Contact(Document):
     email = StringField()
     send_email = BooleanField(default=False)
     phone = StringField()
+    type_chanel = IntField()
