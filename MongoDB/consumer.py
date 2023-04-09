@@ -3,13 +3,10 @@ import sys
 import connect_bd
 from MongoDB.models import Contact
 
-def send_messages(id_contacts):
-    Contact.objects(id=id_contacts).update_one(send_email=True)
-
 
 def callback(ch, method, properties, body):
     print(f" [x] Received {body}")
-    Contact.objects(id=id_contacts).update_one(send_email=True)
+    Contact.objects(id=body.decode('utf-8')).update_one(send_email=True)
 
 def main():
     credentials = pika.PlainCredentials('guest', '0987654321')
