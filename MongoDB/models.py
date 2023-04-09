@@ -16,5 +16,6 @@ class Contact(Document):
     fullname = StringField()
     email = StringField()
     send_email = BooleanField(default=False)
+    send_sms = BooleanField(default=False)
     phone = StringField()
     type_chanel = IntField()
